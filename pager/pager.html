@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pager</title>
+	<style>
+		* {margin:0;padding: 0;}
+		ul {list-style: none;}
+
+		.page {height:40px;overflow: hidden;margin-top: 20px;}
+		.page li {display: inline-block;*display: inline;*zoom:1;border: 1px solid #ccc;background-color: #fff;margin-right: 5px;padding: 5px 8px;cursor: pointer;}
+		.page li:hover {border:1px solid #1B4CA6;background-color: #BBD1F9;}
+		.page li.current {border:1px solid #1B4CA6;background-color: #BBD1F9;}
+		.page li.disable {border:1px solid #eee;color:#999;cursor: auto;background-color: #fff;}
+		.page-text {margin-top: 10px;}
+		.page-text strong {color: #78C6E2;margin-left: 3px;margin-right: 3px;}
+	</style>
+</head>
+<body>
+	<div id="pager">
+		<!-- <ul class="page">
+			<li>第一页</li>
+			<li>上一页</li>
+			<li>1</li>
+			<li>2</li>
+			<li>下一页</li>
+			<li>尾页</li>
+		</ul>
+		 -->
+	</div>
+	<p class="page-text">当前是第<strong>1</strong>页</p>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script src="jquery.pager.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	    $(function(){
+
+	        $('#pager').pager({
+	            pagecurrent:1,
+	            pagecount:20,
+	            btncallback:PageClick,
+	            first_text: 'first'
+	        });
+
+	    });
+	    PageClick = function(pageclickednumber){
+	        $('#pager').pager({
+	            pagecurrent:pageclickednumber,
+	            pagecount:20,
+	            btncallback:PageClick,
+	            first_text: 'first'
+	        });
+	        $('.page-text').html('当前是第<strong>'+pageclickednumber+'</strong>页');
+	    }
+	</script>
+</body>
+</html>
