@@ -37,8 +37,7 @@
 	        $('#pager').pager({
 	            pagecurrent:1,
 	            pagecount:20,
-	            btncallback:PageClick,
-	            first_text: 'first'
+	            btncallback:PageClick
 	        });
 
 	    });
@@ -46,8 +45,7 @@
 	        $('#pager').pager({
 	            pagecurrent:pageclickednumber,
 	            pagecount:20,
-	            btncallback:PageClick,
-	            first_text: 'first'
+	            btncallback:PageClick
 	        });
 	        $('.page-text').html('当前是第<strong>'+pageclickednumber+'</strong>页');
 	    }
