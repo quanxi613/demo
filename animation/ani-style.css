@@ -1,0 +1,295 @@
+* {margin: 0;padding: 0;}
+
+body {
+	background-color: rgb(255,230,215);
+	font-family: 'Microsoft YaHei';
+}
+
+.show-card {
+	animation: fade-in 0.4s 1s forwards ease-out;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 5px;
+	background-color: #fff;
+	border: 6px solid rgb(115,189,140);
+	border-radius: 35px;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	-o-border-radius: 35px;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	font-size: 18px;
+	line-height: 1.5;
+	color: rgb(115,189,140);
+	cursor: pointer;
+	outline: none;
+}
+
+.show-card.hide {
+	animation: fade-out 0.4s 1s forwards ease-out;
+}
+
+.show-card img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.card {
+	display: none;
+	position: absolute;
+	width: 320px;
+	height: 250px;
+	background-color: #fff;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	transition: all 0.4s 0.4s cubic-bezier(.5,.2,.43,1.33);
+}
+
+.card.show .bar {
+	animation: show-bar .5s forwards cubic-bezier(.64,1.87,.64,.64);
+}
+
+.close {
+	background-image: url(iconfont-close.svg);
+	background-size: 20px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	z-index: 10;
+	opacity: 0;
+}
+
+.card.show .close {
+	animation: fade-in 0.3s 1.3s forwards;
+}
+
+.details {
+	text-align: center;
+	height: 0;
+}
+
+.card.show .details {
+	animation: show-detail .7s .5s forwards cubic-bezier(.54,-0.38,.34,1.42);
+}
+
+.name {
+	color: #333;
+	font-weight: bold;
+	margin: 65px 0 0;
+	opacity: 0;
+}
+
+.description {
+	color: #666;
+	font-size: 14px;
+	font-weight: 200;
+	margin: 20px 30px 30px;
+	line-height: 30px;
+	opacity: 0;
+}
+
+.bar {
+	background-color: rgb(115,189,140);
+	border-radius: 5px;
+	width: 360px;
+	height: 0;
+	position: absolute;
+	top: 200px;
+	left: -20px;
+	text-align: center;
+}
+
+.bar ul {
+	margin-top: 15px;
+}
+
+.bar .icon-blog {
+	display: inline-block;
+	background-image: url(iconfont-blog.svg);
+	background-size: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.bar .icon-weibo {
+	display: inline-block;
+	background-image: url(iconfont-weibo.svg);
+	background-size: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.bar .icon-github {
+	display: inline-block;
+	background-image: url(iconfont-github.svg);
+	background-size: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.bar li {
+	list-style: none;
+	display: inline-block;
+	width: 32%;
+	opacity: 0;
+}
+
+
+
+.avatar {
+	width: 100px;
+	height: 100px;
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translateX(-50%, -50%);
+	-moz-transform: translateX(-50%, -50%);
+}
+
+.avatar img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-right: 10px;
+	opacity: 0;
+}
+
+.card.show .avatar img {
+  animation: fade-in 0.4s 1.2s forwards, pop-in 0.6s 1.2s forwards cubic-bezier(.64,1.87,.64,.64);
+}
+.card.show .name {
+  animation: fade-in 0.3s 1.3s forwards, pop-in 0.3s 1.3s forwards cubic-bezier(.64,1.87,.64,.64);
+}
+.card.show .description {
+  animation: fade-in 0.3s 1.4s forwards, pop-in 0.3s 1.4s forwards cubic-bezier(.64,1.87,.64,.64);
+}
+
+.card.show .bar li {
+  animation: show-icon 0.5s forwards cubic-bezier(.64,1.87,.64,.64);
+}
+ 
+.card.show .bar li:nth-child(1) {
+  animation-delay: 1.8s;
+}
+.card.show .bar li:nth-child(2) {
+  animation-delay: 1.9s;
+}
+.card.show .bar li:nth-child(3) {
+  animation-delay: 2s;
+} 
+
+.card.hide {
+  animation: drop-card 1s forwards cubic-bezier(.54,-0.38,.34,1.42);
+}
+
+/*添加动画的准备工作，做下面的设置，相当于先隐藏，在动画之前有一个延迟*/
+/* .close, .name, .description, .avatar img, .bar li {
+	opacity: 0;
+}
+.details {
+	height: 0;
+} */
+
+/*用keyframes来定义动画*/
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes show-bar {
+	from {
+		height: 0;
+	}
+	to {
+		height: 80px;
+	}
+}
+
+@keyframes show-detail {
+	from {
+		height: 0;
+	}
+	to {
+		height: 200px;
+	}
+}
+
+@keyframes pop-in {
+	from {
+		transform: scale(0.7);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes show-icon {
+	from {
+		opacity: 0;
+		transform: rotateZ(-40deg);
+	}
+	to {
+		opacity: 1;
+		transform: rotateZ(0);
+	}
+}
+
+@keyframes drop-card {
+  100% {
+    bottom: -100%;
+    transform: rotateZ(20deg);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

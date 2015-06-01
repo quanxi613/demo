@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation</title>
+	<link rel="stylesheet" href="ani-style.css">
+</head>
+<body>
+	<button class="show-card">
+		<img src="http://tp3.sinaimg.cn/1933500102/180/5694081200/0" alt="">
+		点我~
+	</button>
+	<article class="card">
+		<section class="close"></section>
+		<section class="details">
+			<h2 class="name">节日快乐！</h2>
+			<p class="description">
+				祝童心未泯，不忘初心的童鞋们节日快乐~没事儿来我博客逛逛啊~哈哈
+			</p>
+		</section>
+		<section class="bar">
+			<ul>
+				<li>
+					<a href="http://quanxi613.github.io" class="icon-blog"></a>
+				</li>
+				<li>
+					<a href="http://weibo.com/quanxi613" class="icon-weibo"></a>
+				</li>
+				<li>
+					<a href="https://github.com/quanxi613" class="icon-github"></a>
+				</li>
+			</ul>
+		</section>
+		<section class="avatar">
+			<img src="http://tp3.sinaimg.cn/1933500102/180/5694081200/0" alt="">
+		</section>
+	</article>
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		$(function () {
+			$('.show-card').click(function(event) {
+				$('.card').addClass('show').css('display', 'block');
+				$('.show-card').addClass('hide');
+			});
+
+			$('.card .close').click(function(event) {
+				$('.card').addClass('hide');
+				setTimeout(function() {
+					$('.card').css('display', 'none').removeClass('show').removeClass('hide');
+				}, 1000);				
+				$('.show-card').removeClass('hide');
+			});
+		});
+	</script>
+</body>
+</html>
