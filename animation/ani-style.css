@@ -16,7 +16,6 @@ body {
 	border-radius: 35px;
 	-webkit-border-radius: 35px;
 	-moz-border-radius: 35px;
-	-o-border-radius: 35px;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	-moz-transform: translate(-50%, -50%);
@@ -28,7 +27,7 @@ body {
 }
 
 .show-card.hide {
-	animation: fade-out 0.4s 1s forwards ease-out;
+	-webkit-animation: fade-out 0.4s 1s forwards ease-out;
 }
 
 .show-card img {
@@ -58,7 +57,7 @@ body {
 }
 
 .card.show .bar {
-	animation: show-bar .5s forwards cubic-bezier(.64,1.87,.64,.64);
+	-webkit-animation: show-bar .5s forwards cubic-bezier(.64,1.87,.64,.64);
 }
 
 .close {
@@ -75,7 +74,7 @@ body {
 }
 
 .card.show .close {
-	animation: fade-in 0.3s 1.3s forwards;
+	-webkit-animation: fade-in 0.3s 1.3s forwards;
 }
 
 .details {
@@ -84,7 +83,7 @@ body {
 }
 
 .card.show .details {
-	animation: show-detail .7s .5s forwards cubic-bezier(.54,-0.38,.34,1.42);
+	-webkit-animation: show-detail .7s .5s forwards cubic-bezier(.54,-0.38,.34,1.42);
 }
 
 .name {
@@ -174,31 +173,31 @@ body {
 }
 
 .card.show .avatar img {
-  animation: fade-in 0.4s 1.2s forwards, pop-in 0.6s 1.2s forwards cubic-bezier(.64,1.87,.64,.64);
+  -webkit-animation: fade-in 0.4s 1.2s forwards, pop-in 0.6s 1.2s forwards cubic-bezier(.64,1.87,.64,.64);
 }
 .card.show .name {
-  animation: fade-in 0.3s 1.3s forwards, pop-in 0.3s 1.3s forwards cubic-bezier(.64,1.87,.64,.64);
+  -webkit-animation: fade-in 0.3s 1.3s forwards, pop-in 0.3s 1.3s forwards cubic-bezier(.64,1.87,.64,.64);
 }
 .card.show .description {
-  animation: fade-in 0.3s 1.4s forwards, pop-in 0.3s 1.4s forwards cubic-bezier(.64,1.87,.64,.64);
+  -webkit-animation: fade-in 0.3s 1.4s forwards, pop-in 0.3s 1.4s forwards cubic-bezier(.64,1.87,.64,.64);
 }
 
 .card.show .bar li {
-  animation: show-icon 0.5s forwards cubic-bezier(.64,1.87,.64,.64);
+  -webkit-animation: show-icon 0.5s forwards cubic-bezier(.64,1.87,.64,.64);
 }
  
 .card.show .bar li:nth-child(1) {
-  animation-delay: 1.8s;
+  -webkit-animation-delay: 1.8s;
 }
 .card.show .bar li:nth-child(2) {
-  animation-delay: 1.9s;
+  -webkit-animation-delay: 1.9s;
 }
 .card.show .bar li:nth-child(3) {
-  animation-delay: 2s;
+  -webkit-animation-delay: 2s;
 } 
 
 .card.hide {
-  animation: drop-card 1s forwards cubic-bezier(.54,-0.38,.34,1.42);
+  -webkit-animation: drop-card 1s forwards cubic-bezier(.54,-0.38,.34,1.42);
 }
 
 /*添加动画的准备工作，做下面的设置，相当于先隐藏，在动画之前有一个延迟*/
@@ -210,7 +209,7 @@ body {
 } */
 
 /*用keyframes来定义动画*/
-@keyframes fade-in {
+@-webkit-keyframes fade-in {
 	from {
 		opacity: 0;
 	}
@@ -219,7 +218,7 @@ body {
 	}
 }
 
-@keyframes fade-out {
+@-webkit-keyframes fade-out {
 	from {
 		opacity: 1;
 	}
@@ -228,7 +227,7 @@ body {
 	}
 }
 
-@keyframes show-bar {
+@-webkit-keyframes show-bar {
 	from {
 		height: 0;
 	}
@@ -237,7 +236,7 @@ body {
 	}
 }
 
-@keyframes show-detail {
+@-webkit-keyframes show-detail {
 	from {
 		height: 0;
 	}
@@ -246,30 +245,35 @@ body {
 	}
 }
 
-@keyframes pop-in {
+@-webkit-keyframes pop-in {
 	from {
 		transform: scale(0.7);
+		-webkit-transform: scale(0.7);
 	}
 	to {
 		transform: scale(1);
+		-webkit-transform: scale(1);
 	}
 }
 
-@keyframes show-icon {
+@-webkit-keyframes show-icon {
 	from {
 		opacity: 0;
 		transform: rotateZ(-40deg);
+		-webkit-transform: rotateZ(-40deg);
 	}
 	to {
 		opacity: 1;
 		transform: rotateZ(0);
+		-webkit-transform: rotateZ(0);
 	}
 }
 
-@keyframes drop-card {
+@-webkit-keyframes drop-card {
   100% {
     bottom: -100%;
     transform: rotateZ(20deg);
+    -webkit-transform: rotateZ(20deg);
     opacity: 0;
   }
 }
