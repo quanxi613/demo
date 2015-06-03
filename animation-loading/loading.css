@@ -1,0 +1,337 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.loading-div, .loading-div-dot {
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+	margin-left: 50px;
+	margin-top: 50px;
+	width: 100px;
+	height: 100px;
+	vertical-align: middle;
+	position: relative;
+}
+
+/*loading1*/
+
+.rect {
+	width: 8px;
+	height: 65px;
+	background-color: #84C0F2;
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+	margin-right: 3px;
+
+	animation: stretch 1.5s infinite ease-in-out;
+	-webkit-animation: stretch 1.5s infinite ease-in-out;
+}
+
+.rect.rect1 {
+	animation-delay: .3s;
+	-webkit-animation-delay: .3s;
+}
+
+.rect.rect2 {
+	animation-delay: .4s;
+	-webkit-animation-delay: .4s;
+}
+
+.rect.rect3 {
+	animation-delay: .5s;
+	-webkit-animation-delay: .5s;
+}
+
+.rect.rect4 {
+	animation-delay: .6s;
+	-webkit-animation-delay: .6s;
+}
+
+.rect.rect5 {
+	animation-delay: .7s;
+	-webkit-animation-delay: .7s;
+}
+
+@keyframes stretch {
+	0%, 40%, 100%{
+		transform: scaleY(0.4);
+	}
+	20% {
+		transform: scaleY(1);
+	}
+}
+
+@-webkit-keyframes stretch {
+	0%, 40%, 100%{
+		-webkit-transform: scaleY(0.4);
+	}
+	20% {
+		-webkit-transform: scaleY(1);
+	}
+}
+
+/*loading2*/
+
+.box {
+	width: 50px;
+	height: 50px;
+	background-color: #84C0F2;
+
+	animation: rotate 1.5s infinite ease-in-out;
+	-webkit-animation: rotate 1.5s infinite ease-in-out;
+}
+
+@keyframes rotate {
+	0% {
+		transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+	}
+	50% {
+		transform: perspective(100px) rotateX(-180deg) rotateY(0deg); /*此处需要加rotateY(0deg)，否则会导致50%-100%的过程中不会按Y轴旋转*/
+	}
+	100% {
+		transform: perspective(100px) rotateX(-180deg)  rotateY(-179.9deg);
+	}
+}
+
+@-webkit-keyframes rotate {
+	0% {
+		-webkit-transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+	}
+	50% {
+		-webkit-transform: perspective(100px) rotateX(180deg);
+	}
+	100% {
+		-webkit-transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+	}
+}
+
+/*loading3*/
+
+.bounce1, .bounce2 {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: #84C0F2;
+	opacity: 0.6; /*通过两个圆的叠加使得中心颜色加深*/
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	animation: bounce 2s infinite ease-in-out;
+	-webkit-animation: bounce 2s infinite ease-in-out;
+}
+
+.bounce1 {
+	animation-delay: -1s; /*要让一个圆提前开始动画，否则刚开始会是两个大圆重叠在一起*/
+	-webkit-animation-delay: -1s; /*两圆的时间取值要注意*/
+}
+
+@keyframes bounce {
+	0%, 100%{
+		transform: scale(0);
+	}
+	50% {
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes bounce {
+	0%, 100%{
+		-webkit-transform: scale(0);
+	}
+	50% {
+		-webkit-transform: scale(1);
+	}
+}
+
+
+/*loading4*/
+
+.cube1, .cube2 {
+	width: 30px;
+	height: 30px;
+	background-color: #84C0F2;
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	animation: cube 1.6s infinite ease-in-out;
+	-webkit-animation: cube 1.6s infinite ease-in-out;
+}
+
+.cube2 {
+	animation-delay: -0.8s;
+	-webkit-animation-delay: -0.8s;
+}
+
+@keyframes cube {
+	25% {
+		transform: translateX(40px) scale(0.5) rotate(-90deg) ;
+	}
+	50% {
+		transform: translateX(40px) translateY(40px) scale(1) rotate(-180deg);
+	}
+	75% {
+		transform: translateX(0) translateY(40px) scale(0.5) rotate(-270deg);
+	}
+	100% {
+		transform: scale(1) rotate(-360deg) ;
+	}
+}
+
+@-webkit-keyframes cube {
+	25% {
+		-webkit-transform: translateX(40px) scale(0.5) rotate(-90deg);
+	}
+	50% {
+		-webkit-transform: translateX(40px) translateY(40px) scale(1) rotate(-180deg);
+	}
+	75% {
+		-webkit-transform: translateX(0) translateY(40px) scale(0.5) rotate(-270deg);
+	}
+	100% {
+		-webkit-transform: scale(1) rotate(-360deg);
+	}
+}
+
+/*loading5*/
+
+.dot1, .dot2 {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #84C0F2;
+	position: absolute;
+	top: 0;
+
+	animation: dotmove 2s infinite ease-in-out;
+	-webkit-animation: dotmove 2s infinite ease-in-out;
+}
+
+.dot2 {
+	bottom: 0;
+	top: auto;
+	animation-delay: -1s;
+	-webkit-animation-delay: -1s;
+}
+
+.loading-div-dot {
+	animation: rotate 2s infinite linear;
+	-webkit-animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes rotate {
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes dotmove {
+	50% {
+		transform: scale(1);
+	}
+	0%, 100% {
+		transform: scale(0);
+	}
+}
+
+@-webkit-keyframes dotmove {
+	50% {
+		-webkit-transform: scale(1);
+	}
+	0%, 100% {
+		-webkit-transform: scale(0);
+	}
+}
+
+/*loading6*/
+
+.round1, .round2, .round3 {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #84C0F2;
+	animation: round 1.4s infinite ease-in-out both;
+	-webkit-animation: round 1.4s infinite ease-in-out both;
+
+}
+
+.round1 {
+	animation-delay: -0.32s;
+	-webkit-animation-delay: -0.32s;
+}
+
+.round2 {
+	animation-delay: -0.16s;
+	-webkit-animation-delay: -0.16s;
+}
+
+@keyframes round {
+	50% {
+		transform: scale(1);
+	}
+	0%, 80%, 100% {
+		transform: scale(0);
+	}
+}
+
+@-webkit-keyframes round {
+	50% {
+		-webkit-transform: scale(1);
+	}
+	0%, 80%, 100% {
+		-webkit-transform: scale(0);
+	}
+}
+
+/*loading7*/
+
+.yuan {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: #84C0F2;
+
+	animation: bling 1s infinite ease-in-out;
+	-webkit-animation: bling 1s infinite ease-in-out;
+}
+
+@keyframes bling {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes bling {
+	0% {
+		-webkit-transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		opacity: 0;
+	}
+}
+
+
+
+
+
+
+
+
