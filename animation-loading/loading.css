@@ -101,10 +101,10 @@
 		-webkit-transform: perspective(100px) rotateX(0deg) rotateY(0deg);
 	}
 	50% {
-		-webkit-transform: perspective(100px) rotateX(180deg);
+		-webkit-transform: perspective(100px) rotateX(-180deg);
 	}
 	100% {
-		-webkit-transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+		-webkit-transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
 	}
 }
 
@@ -219,17 +219,17 @@
 }
 
 .loading-div-dot {
-	animation: rotate 2s infinite linear;
-	-webkit-animation: rotate 2s infinite linear;
+	animation: rotatedot 2s infinite linear;
+	-webkit-animation: rotatedot 2s infinite linear;
 }
 
-@keyframes rotate {
+@keyframes rotatedot {
 	100% {
 		transform: rotate(360deg);
 	}
 }
 
-@-webkit-keyframes rotate {
+@-webkit-keyframes rotatedot {
 	100% {
 		-webkit-transform: rotate(360deg);
 	}
@@ -259,8 +259,8 @@
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	border-radius: 50%;
 	background-color: #84C0F2;
 	animation: round 1.4s infinite ease-in-out both;
