@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-animation</title>
+	<style>
+		* {margin:0;padding:0;}
+		body {font-family: "Microsoft YaHei";}
+		h2 {margin-top:50px;text-align:center;}
+		.path-wrap {
+			width:850px;
+			margin:50px auto;
+			text-align:center;
+			border-bottom: 1px dashed #ccc;
+		}
+		.path-wrap p {
+			margin-bottom: 20px
+		}
+		.path-wrap pre {
+			color: #18844B;
+			font-size: 14px;
+			padding: 10px;
+		}
+		.path {
+			width:530px;
+			height:30px;
+			border:3px solid #000;
+			overflow:hidden;
+			position:relative;
+			margin:0 auto 20px;
+		}
+		.block {
+			position:absolute;
+			width:30px;
+			height:30px;
+			background-color:rgb(83, 175, 223);
+		}
+	</style>
+</head>
+<body>
+	<h2>点击下面的进度条，查看效果</h2>
+	<div class="path-wrap">
+		<div class="path" id="path1">
+			<div class="block"></div>
+		</div>
+		<p>Linear delta</p>
+	</div>
+	<div class="path-wrap">
+		<div class="path" id="path2">
+			<div class="block"></div>
+		</div>
+		<p>2次 delta</p>
+	</div>
+	<div class="path-wrap">
+		<div class="path" id="path3">
+			<div class="block"></div>
+		</div>
+		<p>circ delta</p>
+	</div>
+	<div class="path-wrap">
+		<div class="path" id="path4">
+			<div class="block"></div>
+		</div>
+		<p>back delta, x=1.5</p>
+	</div>
+	<div class="path-wrap">
+		<div class="path" id="path5">
+			<div class="block"></div>
+		</div>
+		<p>bounce delta</p>
+	</div>
+	<div class="path-wrap">
+		<div class="path" id="path6">
+			<div class="block"></div>
+		</div>
+		<p>elastic delta</p>
+	</div>
+	<div class="path-wrap">
+		<div class="path" id="path7">
+			<div class="block"></div>
+		</div>
+		<p>easeOut</p>
+	</div>
+	<div class="path-wrap">
+		<div class="path" id="path8">
+			<div class="block"></div>
+		</div>
+		<p>easeInOut</p>
+	</div>
+	<script src="js-animation.js"></script>
+</body>
+</html>
