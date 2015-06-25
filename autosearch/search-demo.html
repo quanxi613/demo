@@ -31,7 +31,10 @@
 </head>
 <body>
 	<div class="input-wrap">
-		<input type="text" id="search-input" />
+		<input type="text" class="search-input" />
+	</div>
+	<div class="input-wrap">
+		<input type="text" class="search-input" />
 	</div>
 	<div class="suggest" id="search-suggest"></div>
 	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
@@ -39,7 +42,7 @@
 	<script>
 		$(function(){
 			$('#search-suggest').autosearch({
-				selector: '#search-input',
+				selector: '.search-input',
 				ajaxUrl: './searchajax'
 			});
 		});
