@@ -11,10 +11,10 @@
 			input.bind('keyup', function() {
 				var _this = $(this);
 				var searchVal = _this.val();
-				doAjax(searchVal, suggestBox, opt.ajaxUrl, _this);				
+				doAjax(searchVal, suggestBox, opt.ajaxUrl, _this);
+				getValue(_this,suggestBox);
 			});
 			doHide(suggestBox);
-			getValue(input,suggestBox);
 		});
 	}
 	
