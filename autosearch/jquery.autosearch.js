@@ -1,8 +1,4 @@
 ;(function($) {
-	var defaults = {
-		selector: '#search-input',
-		ajaxUrl: 'searchajax'
-	};
 
 	$.fn.autosearch = function(arg) {
 		var opt = $.extend({}, defaults, arg);
@@ -11,16 +7,23 @@
 
 
 		return this.each(function() {
+			var current = null;
 			input.bind('keyup', function() {
-				var searchVal = $(this).val();
-				doAjax(searchVal, input, suggestBox, opt.ajaxUrl);				
+				var _this = $(this);
+				var searchVal = _this.val();
+				doAjax(searchVal, suggestBox, opt.ajaxUrl, _this);				
 			});
 			doHide(suggestBox);
 			getValue(input,suggestBox);
 		});
 	}
+	
+	$.fn.defaults = {
+		selector: '#search-input',
+		ajaxUrl: 'searchajax'
+	};
 
-	function doAjax(searchVal, input, suggestBox, ajaxUrl) {		
+	function doAjax(searchVal, suggestBox, ajaxUrl, _this) {		
 		$.ajax({
 			type: 'GET',
 			url: ajaxUrl,
@@ -32,7 +35,7 @@
 				    obj = eval("("+data+")");
 				}
 				else {
-					obj = data;
+				    obj = data;
 				}
 				var htmlArr = [];
 				htmlArr.push('<ul>');
@@ -43,8 +46,8 @@
 				suggestBox.html(htmlArr.join(''));
 
 				suggestBox.show().css({
-					top: input.offset().top + input.height(),
-					left: input.offset().left,
+					top: _this.offset().top + _this.height(),
+					left: _this.offset().left,
 					position: 'absolute'
 				});
 			}
@@ -52,14 +55,14 @@
 	}
 
 	function doHide(suggestBox) {
-		$(document).bind('click', function() {
-			suggestBox.hide()
+		$(document).on('click', function() {
+			suggestBox.hide();
 		});
 	}
 
 	function getValue(input, suggestBox) {
 		suggestBox.on('click', 'li', function() {				
-			input.val($(this).html())
+			input.val($(this).html());
 		});
 	}
 })(jQuery);
