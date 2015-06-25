@@ -1,12 +1,12 @@
 ;(function($) {
 	var defaults = {
-		inputName: '#search-input',
+		selector: '#search-input',
 		ajaxUrl: 'searchajax'
 	};
 
-	$.fn.autosearch = function(options) {
-		var options = $.extend({}, defaults, options);
-		var input = $(options.inputName);
+	$.fn.autosearch = function(arg) {
+		var opt = $.extend({}, defaults, arg);
+		var input = $(opt.selector);
 		var suggestBox = this;
 
 
@@ -27,13 +27,20 @@
 			data: 'p='+searchVal,
 			datatype: 'json',
 			success: function(data) {
-				var obj = eval("("+data+")");
-				var html = '<ul>';
-				for(var i=0; i<obj.data.length; i++){
-					html += '<li>' + obj.data[i].txt + '</li>';
+				var obj = null;
+				if(typeof data == 'string'){
+				    obj = eval("("+data+")");
+				}
+				else {
+					obj = data;
+				}
+				var htmlArr = [];
+				htmlArr.push('<ul>');
+				for(var i=0, len=obj.data.length; i<len; i++){
+					htmlArr.push('<li>' + obj.data[i].txt + '</li>');
 				} 
-				html += '</ul>';
-				suggestBox.html(html);
+				htmlArr.push('</ul>');
+				suggestBox.html(htmlArr.join());
 
 				suggestBox.show().css({
 					top: input.offset().top + input.height(),
@@ -51,7 +58,7 @@
 	}
 
 	function getValue(input, suggestBox) {
-		suggestBox.delegate('li', 'click', function() {				
+		suggestBox.on('click', 'li', function() {				
 			input.val($(this).html())
 		});
 	}
