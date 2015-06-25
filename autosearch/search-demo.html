@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>auto-search</title>
+	<style>
+		*{margin: 0;padding: 0}
+		ul{list-style: none;}
+		input{width: 300px;height: 30px;}
+		.input-wrap {
+			text-align: center;
+			margin-top: 100px;
+		}
+		.suggest {
+			display: none;
+			background-color: #FFF;
+			width: 300px;
+			border: 1px solid #999;
+		}
+		.suggest ul li {
+			padding: 3px;
+			font-size: 14px;
+			line-height: 25px;
+			cursor: pointer;
+		}
+		.suggest ul li:hover {
+			text-decoration: underline;
+			background-color: #e5e5e5;
+		}
+	</style>
+</head>
+<body>
+	<div class="input-wrap">
+		<input type="text" id="search-input" />
+	</div>
+	<div class="suggest" id="search-suggest"></div>
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script src="jquery.autosearch.js"></script>
+	<script>
+		$(function(){
+			$('#search-suggest').autosearch({
+				inputName: '#search-input',
+				ajaxUrl: './searchajax'
+			});
+		});
+	</script>
+</body>
+</html>
