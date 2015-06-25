@@ -1,7 +1,7 @@
 ;(function($) {
 
 	$.fn.autosearch = function(arg) {
-		var opt = $.extend({}, defaults, arg);
+		var opt = $.extend({}, $.fn.defaults, arg);
 		var input = $(opt.selector);
 		var suggestBox = this;
 
