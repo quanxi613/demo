@@ -40,7 +40,7 @@
 					htmlArr.push('<li>' + obj.data[i].txt + '</li>');
 				} 
 				htmlArr.push('</ul>');
-				suggestBox.html(htmlArr.join());
+				suggestBox.html(htmlArr.join(''));
 
 				suggestBox.show().css({
 					top: input.offset().top + input.height(),
