@@ -13,7 +13,7 @@
 		return this.each(function() {
 			input.bind('keyup', function() {
 				var searchVal = $(this).val();
-				doAjax(searchVal, input, suggestBox, options.ajaxUrl);				
+				doAjax(searchVal, input, suggestBox, opt.ajaxUrl);				
 			});
 			doHide(suggestBox);
 			getValue(input,suggestBox);
