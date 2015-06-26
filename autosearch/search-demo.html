@@ -31,18 +31,18 @@
 </head>
 <body>
 	<div class="input-wrap">
-		<input type="text" class="search-input" />
+		<input type="text" id="search-input" />
 	</div>
-	<div class="input-wrap">
+	<!-- <div class="input-wrap">
 		<input type="text" class="search-input" />
-	</div>
+	</div> -->
 	<div class="suggest" id="search-suggest"></div>
 	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<script src="jquery.autosearch.js"></script>
+	<script src="<%$smarty.const.SHIXIBAO_PUBLIC%>/jquery.autosearch.js"></script>
 	<script>
 		$(function(){
 			$('#search-suggest').autosearch({
-				selector: '.search-input',
+				selector: '#search-input',
 				ajaxUrl: './searchajax'
 			});
 		});

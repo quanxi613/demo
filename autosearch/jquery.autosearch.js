@@ -9,21 +9,23 @@
 		return this.each(function() {
 			var current = null;
 			input.bind('keyup', function() {
-				var _this = $(this);
-				var searchVal = _this.val();
-				doAjax(searchVal, suggestBox, opt.ajaxUrl, _this);
-				getValue(_this,suggestBox);
+				current = $(this);
+				var searchVal = current.val();
+				doAjax(searchVal, suggestBox, opt.ajaxUrl, current);
+				
 			});
 			doHide(suggestBox);
+			getValue(input, suggestBox);
+			
 		});
-	}
+	};
 	
 	$.fn.defaults = {
 		selector: '#search-input',
 		ajaxUrl: 'searchajax'
 	};
 
-	function doAjax(searchVal, suggestBox, ajaxUrl, _this) {		
+	function doAjax(searchVal, suggestBox, ajaxUrl, current) {		
 		$.ajax({
 			type: 'GET',
 			url: ajaxUrl,
@@ -46,10 +48,12 @@
 				suggestBox.html(htmlArr.join(''));
 
 				suggestBox.show().css({
-					top: _this.offset().top + _this.height(),
-					left: _this.offset().left,
+					top: current.offset().top + current.height(),
+					left: current.offset().left,
 					position: 'absolute'
 				});
+
+				getValue(current,suggestBox);
 			}
 		});		
 	}
