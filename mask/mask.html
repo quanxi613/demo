@@ -1,0 +1,50 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+		<title>mask</title>
+		<style>
+			* {margin: 0;padding: 0;}
+			.container {margin-left: 100px;margin-top: 100px;}
+			.container .img-wrap {width: 113px;height: 113px;border: 1px solid #ccc;cursor: pointer;position: relative;}
+			.mask {position: absolute;left: 0;top: 113px;width: 100%;height: 0;opacity: 0;background-color:rgba(0,179,138,0.9);color: #fff;}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="container">
+				<div class="img-wrap">
+					<img src="http://www.lagou.com/upload/promotion/ff8080814e57cd51014e58195e660033.jpg" width="113" height="113">
+					<div class="mask">
+						<h3>title</h3>
+						<p>aaaaaaaaaa</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+		<script>
+			$(function(){
+				var timer = null;
+				$(".img-wrap").hover(
+					function(){
+						var that=this;	
+						timer=setTimeout(function(){
+							$(that).find(".mask").animate({"top":0,"height":113,"opacity":1},300,function(){
+								$(that).find("p").fadeIn(200);
+							});
+						},100);
+					},
+					function(){
+						var that=this;	
+						clearTimeout(timer);
+						$(that).find("p").fadeOut(200);
+						$(that).find(".mask").animate({"top":113,"height":0,"opacity":0},300);
+					}
+				)
+			});
+		</script>
+	</body>
+	</html>
