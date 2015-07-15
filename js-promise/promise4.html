@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS异步-Promise</title>
+    <style>
+        html {
+          font-family: sans-serif;
+          line-height: 1.5;
+          font-size: 14px;
+        }
+        h1 {
+          font-family: Cambria, Georgia, serif;
+          font-size: 2em;
+          line-height: 1.3em;
+          margin: 0 0 0.5em;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="story"></div>
+    <script>
+        var storyDiv = document.querySelector('.story');
+
+        function addHtmlToPage(content) {
+          var div = document.createElement('div');
+          div.innerHTML = content;
+          storyDiv.appendChild(div);
+        }
+
+        function addTextToPage(content) {
+          var p = document.createElement('p');
+          p.textContent = content;
+          storyDiv.appendChild(p);
+        }
+
+        function get(url) {
+            return new Promise(function(resolve, reject) {
+
+                var req = new XMLHttpRequest();
+                req.open('GET', url);
+
+                req.onload = function() {
+                    if(req.status == 200) {
+                        resolve(req.response);
+                    }
+                    else {
+                        reject(Error(req.statusText));
+                    }
+                };
+
+                req.onerror = function() {
+                    reject(Error('network error!'));
+                };
+
+                req.send();
+            });
+        }
+
+        function getJSON(url) {
+            return get(url).then(JSON.parse);
+        }
+
+        var storyPromise;
+
+        function getChapter(i) {
+            var storyPromise = storyPromise || getJSON(story.json);
+
+            return storyPromise.then(function(story) {
+                return getJSON(story.chapterUrls[i]);
+            });
+        }
+
+        getJSON('story.json').then(function(story) {
+            addHtmlToPage(story.heading);
+
+            return story.chapterUrls.reduce(function(sequence, chapterUrl) {
+                return sequence.then(function() {
+                    return getJSON(chapterUrl);
+                }).then(function(chapter) {
+                    addHtmlToPage(chapter.html);
+                });
+            }, Promise.resolve());
+        }).then(function() {
+            addTextToPage('All done!')
+        }).catch(function(err) {
+            addTextToPage('argh broken:' + err.message);
+        });
+
+        
+
+    </script>
+  </body>
+</html>
