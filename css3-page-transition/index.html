@@ -7,7 +7,7 @@
     <title>CSS3页面平滑过渡</title>
     <link rel="stylesheet" href="normalize.css">
     <style>
-        body {;
+        body {
             font-family: Georgia,serif;
             background: #ddd;
             font-weight: 400;
@@ -42,6 +42,7 @@
             line-height: 34px;
             position: fixed;
             bottom: 0;
+            cursor: pointer;
         }
         .st-container > input {
             opacity: 0;
@@ -71,8 +72,83 @@
         #st-control-5,#st-control-5 + a {
             left: 80%;
         }
-        .st-container input:checked + a {
+        .st-container input:checked + a,.st-container input:checked:hover + a  {
             background: #821134;
+        }
+        .st-container input:hover + a {
+            background: #AD244F;
+        }
+        .st-container input:checked + a:after {
+            content: '';
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            border: 20px solid transparent;
+            border-bottom-color: #821134;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -20px;
+        }
+
+        .st-scroll, .st-panel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .st-scroll {
+            left: 0;
+            top: 0;
+            -webkit-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            -webkit-backface-visibility: hidden;
+            -webkit-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+        .st-panel {
+            background: #fff;
+            overflow: hidden;
+        }
+        #st-control-1:checked ~ .st-scroll {
+            -webkit-transform: translateY(0%);
+            -o-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            transform: translateY(0%);
+        }
+        #st-control-2:checked ~ .st-scroll {
+            -webkit-transform: translateY(-100%);
+            -o-transform: translateY(-100%);
+            -moz-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
+        #st-control-3:checked ~ .st-scroll {
+            -webkit-transform: translateY(-200%);
+            -o-transform: translateY(-200%);
+            -moz-transform: translateY(-200%);
+            -ms-transform: translateY(-200%);
+            transform: translateY(-200%);
+        }
+        #st-control-4:checked ~ .st-scroll {
+            -webkit-transform: translateY(-300%);
+            -o-transform: translateY(-300%);
+            -moz-transform: translateY(-300%);
+            -ms-transform: translateY(-300%);
+            transform: translateY(-300%);
+        }
+        #st-control-5:checked ~ .st-scroll {
+            -webkit-transform: translateY(-400%);
+            -o-transform: translateY(-400%);
+            -moz-transform: translateY(-400%);
+            -ms-transform: translateY(-400%);
+            transform: translateY(-400%);
         }
     </style>
 </head>
@@ -91,6 +167,35 @@
             <input type="radio" name="radio-set" id="st-control-5">
             <a href="#st-panel-5">panel5</a>
             <!--/nav-->
+            <!--content-->
+            <div class="st-scroll">
+                <section class="st-panel" id="st-panel-1">
+                    <div class="st-desc" data-icon="H"></div>
+                    <h2>panel1</h2>
+                    <p>hello world!</p>
+                </section>
+                <section class="st-panel st-color" id="st-panel-2">
+                    <div class="st-desc" data-icon="2"></div>
+                    <h2>panel2</h2>
+                    <p>hello world!</p>
+                </section>
+                <section class="st-panel" id="st-panel-3">
+                    <div class="st-desc" data-icon="B"></div>
+                    <h2>panel3</h2>
+                    <p>hello world!</p>
+                </section>
+                <section class="st-panel st-color" id="st-panel-4">
+                    <div class="st-desc" data-icon="X"></div>
+                    <h2>panel4</h2>
+                    <p>hello world!</p>
+                </section>
+                <section class="st-panel" id="st-panel-5">
+                    <div class="st-desc" data-icon="C"></div>
+                    <h2>panel5</h2>
+                    <p>hello world!</p>
+                </section>
+            </div>
+            <!--/content-->
         </div>
     </div>
 </body>
