@@ -7,6 +7,15 @@
     <title>CSS3页面平滑过渡</title>
     <link rel="stylesheet" href="normalize.css">
     <style>
+        @font-face {
+            font-family: 'Raphaelicons';
+            src: url('fonts/raphaelicons-webfont.eot') format('eot'),
+                 url('fonts/raphaelicons-webfont.ttf') format('ttf'),
+                 url('fonts/raphaelicons-webfont.svg') format('svg'),
+                 url('fonts/raphaelicons-webfont.woff') format('woff');
+            font-style: normal;
+            font-weight: normal;
+        }
         body {
             font-family: Georgia,serif;
             background: #ddd;
@@ -164,6 +173,26 @@
             -o-transform: translateY(-50%) rotate(45deg);
             -moz-transform: translateY(-50%) rotate(45deg);
             transform: translateY(-50%) rotate(45deg);
+        }
+
+        [data-icon]:after {
+            content: attr(data-icon);
+            width: 200px;
+            height: 200px;
+            color: #fff;
+            font-size: 90px;
+            text-align: center;
+            line-height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -100px;
+            -webkit-transform: rotate(-45deg) translateY(25%);
+            -ms-transform: rotate(-45deg) translateY(25%);
+            -o-transform: rotate(-45deg) translateY(25%);
+            -moz-transform: rotate(-45deg) translateY(25%);
+            transform: rotate(-45deg) translateY(25%);
+            font-family: 'Raphaelicons';
         }
     </style>
 </head>
