@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form demo</title>
+	<style>
+		input[type="text"] {
+			width: 150px;
+			height: 30px;
+			margin-bottom: 20px;
+		}
+		textarea {
+			vertical-align: text-top;
+		}
+		span {
+			color: red;
+		}
+		.hidden {
+			display: none;
+		}
+		.error {
+			border-color: red;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" class="user-info">
+	  <div>
+	    <label>姓名:&nbsp;<input type="text" id="name" name="name"><span id="name-err" class="hidden"></span></label>
+	  </div>
+	  <div>
+	    <label>年龄:&nbsp;<input type="text" id="age" name="age"><span id="age-err" class="age-err hidden"></span></label>
+	  </div>
+	  <div>
+	    <label>邮箱:&nbsp;<input type="text" id="email" name="email"><span id="email-err" class="email-err hidden"></span></label>
+	  </div>
+	  <div>说明:
+	    <textarea name="desc"></textarea>
+	  </div>
+	  <div>
+	    <button type="submit" class="btn-submit">注册</button>
+	  </div>
+	</form>	
+	<script src="http://cdn.bootcss.com/jquery/1.10.1/jquery.min.js"></script>
+	<script src="demo.js"></script>
+</body>
+</html>
