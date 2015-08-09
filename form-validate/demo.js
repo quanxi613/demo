@@ -4,7 +4,7 @@
  * @date 2015-08-09
  */
 
-var URL_SUBMIT = 'demo/form-validate/demoajax.json';
+var URL_SUBMIT = './demoajax.json';
 
 //验证处理
 var fields = [
