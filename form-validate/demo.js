@@ -29,7 +29,7 @@ var fields = [
 		validate: function(value) {
 			return {
 				validity: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(value),
-				msg: '格式有误'
+				msg: '格式有误!'
 			};
 		}
 	}
