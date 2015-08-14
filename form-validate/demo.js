@@ -149,7 +149,6 @@ function initForm() {
 			ajaxHandler(userObj);
 		}
 	});
-
 }
 
 initForm();
