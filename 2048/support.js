@@ -122,3 +122,18 @@ function noBarrierRow(rol, row1, row2, board) {
 	
 	return true;
 }
+
+function noMove(board) {
+	if(canMoveLeft(board) 
+		|| canMoveRight(board)
+		|| canMoveUp(board)
+		|| canMoveDown(board)) {
+		return false;
+	}
+
+	return true;
+}
+
+function updateScore(score) {
+	$('#score').text(score);
+}
