@@ -1,5 +1,5 @@
 var board = new Array();
-
+var score = 0;
 
 $(document).ready(function () {
 	newgame();
@@ -30,6 +30,8 @@ function init() {
 	}
 
 	updateBoardView();
+
+	score = 0;
 }
 
 function updateBoardView() {
@@ -95,29 +97,29 @@ $(document).keydown(function(e) {
 		case 37:
 			//判断是否能够左移
 			if(moveLeft()) {
-				generateOneNum();
-				isGameOver();
+				setTimeout("generateOneNum()", 210);
+				setTimeout("isGameOver()", 350);
 			}
 			break;
 		//up
 		case 38:
 			if(moveUp()) {
-				generateOneNum();
-				isGameOver();
+				setTimeout("generateOneNum()", 210);
+				setTimeout("isGameOver()", 350);
 			}
 			break;
 		//right
 		case 39:
 			if(moveRight()) {
-				generateOneNum();
-				isGameOver();
+				setTimeout("generateOneNum()", 210);
+				setTimeout("isGameOver()", 350);
 			}
 			break;
 		//down
 		case 40:
 			if(moveDown()) {
-				generateOneNum();
-				isGameOver();
+				setTimeout("generateOneNum()", 210);
+				setTimeout("isGameOver()", 350);
 			}
 		    break;
 		defalut:
@@ -126,7 +128,15 @@ $(document).keydown(function(e) {
 });
 
 function isGameOver() {
+	//棋盘没有空间且无法再移动时游戏结束
+	if(noSpace(board) && noMove(board)) {
+		gameOver();
+	}
+}
 
+function gameOver() {
+	var lastScore = $('#score').text();
+	alert('游戏结束! 您的得分是'+lastScore);
 }
 
 function moveLeft() {
@@ -151,6 +161,8 @@ function moveLeft() {
 						showMoveAnimate(i,j,i,k);
 						board[i][k] += board[i][j];
 						board[i][j] = 0;
+						score += board[i][k];
+						updateScore(score);
 						continue;
 					}
 				}
@@ -185,6 +197,8 @@ function moveRight() {
 						showMoveAnimate(i,j,i,k);
 						board[i][k] += board[i][j];
 						board[i][j] = 0;
+						score += board[i][k];
+						updateScore(score);
 						continue;
 					}
 				}
@@ -219,6 +233,8 @@ function moveUp() {
 						showMoveAnimate(i,j,k,j);
 						board[k][j] += board[i][j];
 						board[i][j] = 0;
+						score += board[i][k];
+						updateScore(score);
 						continue;
 					}
 				}
@@ -253,6 +269,8 @@ function moveDown() {
 						showMoveAnimate(i,j,k,j);
 						board[k][j] += board[i][j];
 						board[i][j] = 0;
+						score += board[i][k];
+						updateScore(score);
 						continue;
 					}
 				}
