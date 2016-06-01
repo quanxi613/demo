@@ -1,5 +1,6 @@
 var board = new Array();
 var score = 0;
+var hasConflicted = new Array(); //记录每个位置的碰撞状态
 
 $(document).ready(function () {
 	newgame();
@@ -24,8 +25,10 @@ function init() {
 
 	for(var i=0;i<4;i++) {
 		board[i] = new Array();
+		hasConflicted[i] = new Array();
 		for(var j=0;j<4;j++) {
 			board[i][j] = 0;
+			hasConflicted[i][j] = false; //初始状态下每个位置都是没有碰撞过的
 		}
 	}
 
@@ -57,6 +60,8 @@ function updateBoardView() {
 				numCellItem.css('background-color', getNumberBackgroundColor(numCellItemVal));
 				numCellItem.css('color', getNumberColor(numCellItemVal));
 			}
+
+			hasConflicted[i][j] = false; //还原每个位置的初始碰撞状态
 		}
 	}
 }
@@ -156,13 +161,14 @@ function moveLeft() {
 						board[i][j] = 0;
 						continue;
 					}
-					else if(board[i][k] == board[i][j] && noBarrierCol(i,k,j,board)) {
+					else if(board[i][k] == board[i][j] && noBarrierCol(i,k,j,board) && !hasConflicted[i][k]) {
 						//move操作,叠加
 						showMoveAnimate(i,j,i,k);
 						board[i][k] += board[i][j];
 						board[i][j] = 0;
 						score += board[i][k];
 						updateScore(score);
+						hasConflicted[i][k] = true;
 						continue;
 					}
 				}
@@ -192,13 +198,14 @@ function moveRight() {
 						board[i][j] = 0;
 						continue;
 					}
-					else if(board[i][k] == board[i][j] && noBarrierCol(i,j,k,board)) {
+					else if(board[i][k] == board[i][j] && noBarrierCol(i,j,k,board) && !hasConflicted[i][k]) {
 						//move操作,叠加
 						showMoveAnimate(i,j,i,k);
 						board[i][k] += board[i][j];
 						board[i][j] = 0;
 						score += board[i][k];
 						updateScore(score);
+						hasConflicted[i][k] = true;
 						continue;
 					}
 				}
@@ -228,13 +235,14 @@ function moveUp() {
 						board[i][j] = 0;
 						continue;
 					}
-					else if(board[k][j] == board[i][j] && noBarrierRow(j,k,i,board)) {
+					else if(board[k][j] == board[i][j] && noBarrierRow(j,k,i,board) && !hasConflicted[k][j]) {
 						//move操作,叠加
 						showMoveAnimate(i,j,k,j);
 						board[k][j] += board[i][j];
 						board[i][j] = 0;
 						score += board[i][k];
 						updateScore(score);
+						hasConflicted[k][j] = true;
 						continue;
 					}
 				}
@@ -264,13 +272,14 @@ function moveDown() {
 						board[i][j] = 0;
 						continue;
 					}
-					else if(board[k][j] == board[i][j] && noBarrierRow(j,i,k,board)) {
+					else if(board[k][j] == board[i][j] && noBarrierRow(j,i,k,board) && !hasConflicted[k][j]) {
 						//move操作,叠加
 						showMoveAnimate(i,j,k,j);
 						board[k][j] += board[i][j];
 						board[i][j] = 0;
 						score += board[i][k];
 						updateScore(score);
+						hasConflicted[k][j] = true;
 						continue;
 					}
 				}
